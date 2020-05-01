@@ -9,3 +9,15 @@ before_install:
 script:
   # -e CI=true sets env variable telling travis to only run the test once, not in watch mode
   - docker run -e CI=true robinerickson/docker-react npm run test
+
+deploy:
+  provider: elasticbeanstalk
+  region: "ca-central-1"
+  app: "docker-react"
+  env: "DockerReact-env"
+  bucket_name: "elasticbeanstalk-ca-central-1-585550510790" # S3 bucket, Travis bundles the app here
+  bucket_path: "docker-react" # use app name as default
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
