@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  web:
+    stdin_open: true # to fix bug in create-react-app
+    build:
+      context: . #where do we want the files to be pulled from, here it's cwd
+      dockerfile: Dockerfile.dev # use this file for the build
+    ports:
+    - "3000:3000"
+    volumes:
+    - /app/node_modules
+    - .:/app
