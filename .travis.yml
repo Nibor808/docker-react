@@ -1,5 +1,5 @@
 language: generic
-sudo: required # required for travis to use docker
+
 services:
   - docker
 
@@ -15,7 +15,7 @@ deploy:
   region: "ca-central-1"
   app: "docker-react"
   env: "DockerReact-env"
-  bucket_name: "elasticbeanstalk-ca-central-1-585550510790" # S3 bucket, Travis bundles the app here
+  bucket: "elasticbeanstalk-ca-central-1-585550510790" # S3 bucket, Travis bundles the app here
   bucket_path: "docker-react" # use app name as default
   on:
     branch: master
